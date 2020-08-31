@@ -2,24 +2,21 @@
   <div>
     <NavBar selected="dashboard" />
     <main class="container">
-      <div class="text-right">
-        <router-link class="btn btn-success mb-2" tag="button" to='/create-event'>New</router-link>
-      </div>
-      <EventsTable />
+      <CreateEventForm />
     </main>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import CreateEventForm from '@/components/create-event/CreateEventForm.vue';
 import NavBar from '@/components/navbar/NavBar.vue';
-import EventsTable from '@/components/events-table/EventsTable.vue';
 
 export default Vue.extend({
-  name: 'Dashboard',
+  name: 'CreateEvent',
   components: {
     NavBar,
-    EventsTable,
+    CreateEventForm,
   },
 });
 </script>

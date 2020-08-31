@@ -1,10 +1,10 @@
 <template>
   <tr>
-    <td>{{ event.title }}</td>
-    <td>{{ event.date }}</td>
+    <td class="align-middle">{{ event.title }}</td>
+    <td class="align-middle">{{ event.date }}</td>
     <td class="text-right">
-      <router-link class="button mr-2" tag="button" :to="editPath">Edit</router-link>
-      <button @click.prevent="deleteEvent" class="button">Delete</button>
+      <router-link class="btn btn-primary mr-2" tag="button" :to="editPath">Edit</router-link>
+      <button @click.prevent="deleteEvent" class="btn btn-success">Delete</button>
     </td>
   </tr>
 </template>

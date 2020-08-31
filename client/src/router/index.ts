@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import EditEvent from '@/views/EditEvent.vue';
+import CreateEvent from '@/views/CreateEvent.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes: Array<RouteConfig> = [
     path: '/edit-event/:id',
     name: 'Edit Event',
     component: EditEvent,
+  },
+  {
+    path: '/create-event',
+    name: 'Create Event',
+    component: CreateEvent,
   },
 ];
 

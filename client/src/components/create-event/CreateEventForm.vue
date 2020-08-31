@@ -42,17 +42,15 @@ import Vue from 'vue';
 import { mapGetters } from 'vuex';
 
 export default Vue.extend({
-  name: 'EditEventForm',
+  name: 'CreateEventForm',
   computed: {
     ...mapGetters(['editEvent']),
   },
-  created() {
-    this.$store.dispatch('fetchEditEvent', this.$route.params.id);
-  },
   methods: {
     submitForm() {
-      this.$store.dispatch('updateEvent', this.$route.params.id);
-      this.$router.push('/dashboard');
+      this.$store.dispatch('createEvent').then(() => {
+        this.$router.push('/dashboard');
+      });
     },
     updateTitle(e: any) {
       this.$store.dispatch('updateTitle', e.target.value);

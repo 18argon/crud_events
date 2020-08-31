@@ -1,5 +1,5 @@
 interface Event {
-  readonly id: string;
+  readonly id?: string | undefined;
   readonly title: string;
   readonly description: string;
   readonly date: Date;
