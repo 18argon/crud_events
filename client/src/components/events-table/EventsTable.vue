@@ -1,6 +1,6 @@
 <template>
-  <div class="table-responsive">
-    <table class="table">
+  <div class="table-responsive table-striped border rounded">
+    <table class="table mb-0">
       <EventsTableHead />
       <EventsTableBody>
         <EventsTableRow v-for="event in events" :key="event.id" :event="event" />

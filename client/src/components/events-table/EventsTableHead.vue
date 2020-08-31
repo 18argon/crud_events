@@ -1,8 +1,8 @@
 <template>
-  <thead>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Actions</th>
+  <thead class="thead-dark">
+    <th scope="col">Title</th>
+    <th scope="col">Date</th>
+    <th scope="col" class="text-right">Actions</th>
   </thead>
 </template>
 
