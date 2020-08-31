@@ -19,7 +19,7 @@ services:
   server:
     build: ./server
     environment: 
-      MONGODB_URI: "${MONGODB_URI:-mongodb://root:root@mongo:27019/events}"
+      MONGODB_URI: "${MONGODB_URI:-mongodb://root:root@mongo:27019/events?authSource=admin}"
     depends_on: 
       - db
     ports:
