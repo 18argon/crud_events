@@ -1,15 +1,15 @@
 <template>
   <div>
-    <NavBar />
-    <div class="home">
+    <NavBar selected="dashboard" />
+    <main class="container">
       <EventsTable />
-    </div>
+    </main>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import NavBar from '@/components/NavBar.vue';
+import NavBar from '@/components/navbar/NavBar.vue';
 import EventsTable from '@/components/events-table/EventsTable.vue';
 
 export default Vue.extend({
