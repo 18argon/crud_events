@@ -1,22 +1,20 @@
 
 import { Document } from 'mongoose';
-import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
 
+@Schema()
 export class Event extends Document {
   @Prop({
-    type: String,
     required: true
   })
   title: string;
 
   @Prop({
-    type: String,
     required: true
   })
   description: string;
 
   @Prop({
-    type: Date,
     required: true
   })
   date: Date;

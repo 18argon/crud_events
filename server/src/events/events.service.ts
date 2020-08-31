@@ -2,15 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Event } from "./schemas/event.schema";
-import { CreateEventDao } from './dao/create-event.dao';
-import { UpdateEventDao } from "./dao/update-event.dao";
+import { CreateEventDao } from './dto/create-event.dto';
+import { UpdateEventDao } from "./dto/update-event.dto";
 
 @Injectable()
 export class EventsService {
   constructor(@InjectModel(Event.name) private eventModel: Model<Event>) { }
   async create(createEventDao: CreateEventDao): Promise<Event> {
     const createdEvent = new this.eventModel(createEventDao);
-    return createdEvent.save();
+    return createdEvent.save();;
   }
 
   async update(id: string, updateEventDao: UpdateEventDao): Promise<void> {

@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Delete, Param, Put } from '@nestjs/common';
 import { EventsService } from './events.service';
 import { Event } from "./schemas/event.schema";
-import { CreateEventDao } from './dao/create-event.dao';
-import { UpdateEventDao } from './dao/update-event.dao';
+import { CreateEventDao } from './dto/create-event.dto';
+import { UpdateEventDao } from './dto/update-event.dto';
 
 @Controller('events')
 export class EventsController {
@@ -15,7 +15,6 @@ export class EventsController {
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() updateEventDao: UpdateEventDao): Promise<void> {
-    console.log(updateEventDao);
     this.eventsService.update(id, updateEventDao);
   }
 
