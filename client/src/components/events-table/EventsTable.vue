@@ -21,7 +21,7 @@ export default Vue.extend({
   computed: {
     ...mapGetters(['events']),
   },
-  created() {
+  mounted() {
     this.$store.dispatch('fetchEvents');
   },
   components: {

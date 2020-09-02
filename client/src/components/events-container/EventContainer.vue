@@ -9,7 +9,6 @@
 <script lang='ts'>
 import Vue from 'vue';
 import { mapGetters } from 'vuex';
-import eventsService from '@/services/events-service';
 import EventCard from './EventCard.vue';
 
 export default Vue.extend({
@@ -17,14 +16,8 @@ export default Vue.extend({
   computed: {
     ...mapGetters(['events']),
   },
-  created() {
-    this.$store.dispatch('fetchEvents');
-  },
   mounted() {
-    eventsService.fetchEvents()
-      .then((events) => {
-        this.events = events;
-      });
+    this.$store.dispatch('fetchEvents');
   },
   components: {
     EventCard,

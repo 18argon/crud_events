@@ -56,23 +56,35 @@ export default new Vuex.Store({
         });
     },
     updateEvent({ commit }, payload) {
-      const data = {
-        id: payload,
-        ...this.state.editEvent,
-      };
-      eventsService.updateEvent(data)
-        .then(() => {
-          commit('CLEAR_EDIT_EVENT');
-        });
+      return new Promise((resolve, reject) => {
+        const data = {
+          id: payload,
+          ...this.state.editEvent,
+        };
+        eventsService.updateEvent(data)
+          .then(() => {
+            commit('CLEAR_EDIT_EVENT');
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
     },
     createEvent({ commit }) {
-      const data = {
-        ...this.state.editEvent,
-      };
-      eventsService.createEvent(data)
-        .then(() => {
-          commit('CLEAR_EDIT_EVENT');
-        });
+      return new Promise((resolve, reject) => {
+        const data = {
+          ...this.state.editEvent,
+        };
+        eventsService.createEvent(data)
+          .then(() => {
+            commit('CLEAR_EDIT_EVENT');
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
     },
     deleteEvent({ commit }, payload) {
       eventsService.deleteEvent(payload)

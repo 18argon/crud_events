@@ -9,14 +9,13 @@ export default {
     return fetch(`${process.env.VUE_APP_API_URL}/events/${id}`)
       .then((response) => response.json());
   },
-  async deleteEvent(eventId: string): Promise<void> {
-    fetch(`${process.env.VUE_APP_API_URL}/events/${eventId}`, {
+  async deleteEvent(eventId: string): Promise<Response> {
+    return fetch(`${process.env.VUE_APP_API_URL}/events/${eventId}`, {
       method: 'DELETE',
     });
   },
-  async createEvent(event: Event): Promise<void> {
-    console.log(event);
-    fetch(`${process.env.VUE_APP_API_URL}/events`, {
+  async createEvent(event: Event): Promise<Response> {
+    return fetch(`${process.env.VUE_APP_API_URL}/events`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -24,9 +23,8 @@ export default {
       body: JSON.stringify(event),
     });
   },
-  async updateEvent(event: Event): Promise<void> {
-    console.log(event);
-    fetch(`${process.env.VUE_APP_API_URL}/events/${event.id}`, {
+  async updateEvent(event: Event): Promise<Response> {
+    return fetch(`${process.env.VUE_APP_API_URL}/events/${event.id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
