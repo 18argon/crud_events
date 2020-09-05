@@ -1,111 +1,16 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
-import eventsService from '@/services/events-service';
-import Event from '@/models/Event';
+import Vuex, { StoreOptions } from 'vuex';
+import editForm from './edit_form';
+import events from './events';
+import { RootState } from './types';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-    events: [] as Event[],
-    editEvent: {
-      title: '',
-      description: '',
-      date: new Date(),
-    },
-  },
-  mutations: {
-    UPDATE_EVENTS(state, payload) {
-      state.events = payload;
-    },
-    LOAD_EDIT_EVENT(state, payload) {
-      state.editEvent = payload;
-    },
-    UPDATE_TITLE(state, payload) {
-      state.editEvent.title = payload;
-    },
-    UPDATE_DESCRIPTION(state, payload) {
-      state.editEvent.description = payload;
-    },
-    UPDATE_DATE(state, payload) {
-      state.editEvent.date = payload;
-    },
-    CLEAR_EDIT_EVENT(state) {
-      state.editEvent = {
-        title: '',
-        description: '',
-        date: new Date(),
-      };
-    },
-    DELETE_EVENT(state, payload) {
-      const idx = state.events.map((event) => event.id).indexOf(payload);
-      state.events.splice(idx, 1);
-    },
-  },
-  actions: {
-    fetchEvents({ commit }) {
-      eventsService.fetchEvents()
-        .then((events) => {
-          commit('UPDATE_EVENTS', events);
-        });
-    },
-    fetchEditEvent({ commit }, payload) {
-      eventsService.fetchEvent(payload)
-        .then((event) => {
-          commit('LOAD_EDIT_EVENT', event);
-        });
-    },
-    updateEvent({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        const data = {
-          id: payload,
-          ...this.state.editEvent,
-        };
-        eventsService.updateEvent(data)
-          .then(() => {
-            commit('CLEAR_EDIT_EVENT');
-            resolve();
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
-    createEvent({ commit }) {
-      return new Promise((resolve, reject) => {
-        const data = {
-          ...this.state.editEvent,
-        };
-        eventsService.createEvent(data)
-          .then(() => {
-            commit('CLEAR_EDIT_EVENT');
-            resolve();
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
-    deleteEvent({ commit }, payload) {
-      eventsService.deleteEvent(payload)
-        .then(() => {
-          commit('DELETE_EVENT', payload);
-        });
-    },
-    updateTitle({ commit }, payload) {
-      commit('UPDATE_TITLE', payload);
-    },
-    updateDescription({ commit }, payload) {
-      commit('UPDATE_DESCRIPTION', payload);
-    },
-    updateDate({ commit }, payload) {
-      commit('UPDATE_DATE', payload);
-    },
-  },
-  getters: {
-    events: (state) => state.events,
-    editEvent: (state) => state.editEvent,
-  },
+const storeOptions: StoreOptions<RootState> = {
   modules: {
+    events,
+    editForm,
   },
-});
+};
+
+export default new Vuex.Store<RootState>(storeOptions);
