@@ -1,7 +1,7 @@
-import Event from '@/models/Event';
+import EventEntry from '@/models/EventEntry';
 
 export interface EventsState {
-  events: Event[];
+  events: EventEntry[];
 }
 
 export const namespace = 'events';

@@ -12,13 +12,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Event from '@/models/Event';
+import EventEntry from '@/models/EventEntry';
 
 export default Vue.extend({
   name: 'EventCard',
   props: {
     event: {
-      type: Object as () => Event,
+      type: Object as () => EventEntry,
       required: true,
     },
   },

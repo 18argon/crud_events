@@ -1,10 +1,10 @@
 import { MutationTree } from 'vuex';
-import Event from '@/models/Event';
+import EventEntry from '@/models/EventEntry';
 import { EventsState } from './types';
 import { MutationTypes } from '../types';
 
 const mutations: MutationTree<EventsState> = {
-  [MutationTypes.UPDATE_EVENTS](state, payload: Event[]) {
+  [MutationTypes.UPDATE_EVENTS](state, payload: EventEntry[]) {
     state.events = payload;
   },
   [MutationTypes.DELETE_EVENT](state, payload: string) {

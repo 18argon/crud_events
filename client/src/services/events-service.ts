@@ -1,11 +1,11 @@
-import Event from '@/models/Event';
+import EventEntry from '@/models/EventEntry';
 
 export default {
-  async fetchEvents(): Promise<Event[]> {
+  async fetchEvents(): Promise<EventEntry[]> {
     return fetch(`${process.env.VUE_APP_API_URL}/events`)
       .then((response) => response.json());
   },
-  async fetchEvent(id: string): Promise<Event> {
+  async fetchEvent(id: string): Promise<EventEntry> {
     return fetch(`${process.env.VUE_APP_API_URL}/events/${id}`)
       .then((response) => response.json());
   },
@@ -14,7 +14,7 @@ export default {
       method: 'DELETE',
     });
   },
-  async createEvent(event: Event): Promise<Response> {
+  async createEvent(event: EventEntry): Promise<Response> {
     return fetch(`${process.env.VUE_APP_API_URL}/events`, {
       method: 'POST',
       headers: {
@@ -23,7 +23,7 @@ export default {
       body: JSON.stringify(event),
     });
   },
-  async updateEvent(event: Event): Promise<Response> {
+  async updateEvent(event: EventEntry): Promise<Response> {
     return fetch(`${process.env.VUE_APP_API_URL}/events/${event.id}`, {
       method: 'PUT',
       headers: {

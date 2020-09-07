@@ -1,8 +1,8 @@
-interface Event {
+interface EventEntry {
   readonly id?: string | undefined;
   readonly title: string;
   readonly description: string;
   readonly date: Date;
 }
 
-export default Event;
+export default EventEntry;
