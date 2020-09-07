@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import EditEvent from '@/views/EditEvent.vue';
 import CreateEvent from '@/views/CreateEvent.vue';
+import Login from '@/views/Login.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: '/create-event',
     name: 'Create Event',
     component: CreateEvent,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
 ];
 
