@@ -1,5 +1,5 @@
 export interface EditFormState {
-  fields: EditFormFields,
+  fields: EditFormFields;
 }
 
 export interface EditFormFields {

@@ -55,14 +55,20 @@ export default Vue.extend({
         this.$router.push('/dashboard');
       });
     },
-    updateTitle(e: any) {
-      this.$store.dispatch('updateTitle', e.target.value);
+    updateTitle(e: Event) {
+      if (e.target === null) return;
+      const newTitle = (e.target as HTMLInputElement).value;
+      this.$store.dispatch('updateTitle', newTitle);
     },
-    updateDescription(e: any) {
-      this.$store.dispatch('updateDescription', e.target.value);
+    updateDescription(e: Event) {
+      if (e.target === null) return;
+      const newDescription = (e.target as HTMLInputElement).value;
+      this.$store.dispatch('updateDescription', newDescription);
     },
-    updateDate(e: any) {
-      this.$store.dispatch('updateDate', e.target.value);
+    updateDate(e: Event) {
+      if (e.target === null) return;
+      const newDate = (e.target as HTMLInputElement).value;
+      this.$store.dispatch('updateDate', newDate);
     },
   },
   components: {},
